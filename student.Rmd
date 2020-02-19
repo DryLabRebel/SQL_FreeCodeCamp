@@ -1,0 +1,57 @@
+The first SQL tutorial on FCC
+=============================
+
+taken from the FCC's page on beginner SQL, it starts with some recommendations, then goes through the most basic basics, which I work through here.
+
+Looking at the student table.
+
+Remember, to look at columns in a table:
+
+```{sql}
+
+SELECT someColumn, someotherColumn, columnN
+FROM TableName;
+
+```
+
+To create a table:
+
+```{sql}
+
+CREATE TABLE Persons (
+ID int NOT NULL,
+LastName varchar(255) NOT NULL,
+FirstName varchar(255),
+Age int,
+CHECK (Age>=18) -- This ensures everyone records their age at 18 years old or older
+);
+
+```
+
+To give our CHECK constraint a name:
+
+```{sql}
+
+ALTER TABLE Persons
+ADD constraint CHK_PersonAge;
+
+-- And drop the named constraint
+
+alter table Persons
+drop constraint CHK_PersonAge;
+
+-- interesting in MySQL the syntax requires 'check' instead of 'constraint' here, but in PostgreSQL the syntax is 'constraint'...
+-- not sure why that's interesting, except that postgres is written by the authors of MySQL...
+
+```
+
+> Please see the manual for your database manager and have fun trying different options yourself.
+
+Lol!
+
+How do I:
+
+- quickly duplicate (backup) a table?
+- quickly populate a table with information?
+
+It's really hard working through these examples without the actual table. Might be worth just going through and adding the student table to my database, one line at a time, just to burn the syntax into my muscles.
