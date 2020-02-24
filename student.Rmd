@@ -9,8 +9,11 @@ Remember, to look at columns in a table:
 
 ```{sql}
 
-SELECT someColumn, someotherColumn, columnN
-FROM TableName;
+-- Had to modify the code from the FreeCodeCamp tutorial to make it work for postgres. Apparently there's an even cleaner way than this, using concat() or something to that effect
+-- I never would've realised I had to do this if I didn't make the effort to create this student table!
+
+select firstname, lastname, firstname || ' ' || lastname AS fullname
+from student;
 
 ```
 
@@ -37,13 +40,21 @@ ADD constraint CHK_PersonAge;
 
 -- And drop the named constraint
 
-alter table Persons
-drop constraint CHK_PersonAge;
+ALTER TABLE Persons
+DROP constraint CHK_PersonAge;
 
 -- interesting in MySQL the syntax requires 'check' instead of 'constraint' here, but in PostgreSQL the syntax is 'constraint'...
 -- not sure why that's interesting, except that postgres is written by the authors of MySQL...
 
 ```
+
+```{sql}
+
+SELECT studentID, fullname, sat_score, rcd_updated
+FROM student;
+
+```
+
 
 > Please see the manual for your database manager and have fun trying different options yourself.
 
@@ -55,3 +66,5 @@ How do I:
 - quickly populate a table with information?
 
 It's really hard working through these examples without the actual table. Might be worth just going through and adding the student table to my database, one line at a time, just to burn the syntax into my muscles.
+
+
