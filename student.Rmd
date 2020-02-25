@@ -55,6 +55,47 @@ FROM student;
 
 ```
 
+```{sql}
+
+ALTER TABLE student
+ADD COLUMN fullname varchar(100) NULL;
+
+UPDATE student 
+SET fullname = firstname || ' ' || lastname 
+WHERE fullname IS NULL;
+
+```
+
+Noice!
+
+```{sql}
+
+select studentid, fullname, sat_score, rcd_updated
+from student
+where (studentid between 1 and 5 or studentid = 8);
+
+```
+
+```{sql}
+
+select studentid, fullname, sat_score, rcd_updated
+from student
+where (studentid between 1 and 5 or studentid = 8)
+and sat_score NOT in (1000, 1400);
+
+```
+
+```{sql}
+
+update student
+set rcd_updated = timestamptz;
+-- something here doesn't work
+-- need to figure out how to update the existing rows with the current timestamp
+
+```
+
+
+
 
 > Please see the manual for your database manager and have fun trying different options yourself.
 
